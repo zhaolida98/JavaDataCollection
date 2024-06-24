@@ -1,0 +1,16 @@
+group,artifact,version,date
+org.jboss.resteasy,resteasy-rxjava2,3.9.0.Final,1567204241000
+org.jboss.resteasy,resteasy-rxjava2,3.6.1.SP7,1569266052000
+org.jboss.resteasy,resteasy-rxjava2,4.3.1.Final,1569405649000
+org.jboss.resteasy,resteasy-rxjava2,4.4.0.CR1,1571951118000
+org.jboss.resteasy,resteasy-rxjava2,4.4.0.Final,1572345204000
+org.wildfly,wildfly-microprofile-opentracing-smallrye,14.0.0.Beta2,1534374478000
+org.wildfly,wildfly-microprofile-opentracing-smallrye,14.0.0.Final,1535666658000
+org.wildfly,wildfly-microprofile-opentracing-smallrye,14.0.1.Final,1536193919000
+org.wildfly,wildfly-microprofile-opentracing-smallrye,15.0.0.Beta1,1542247858000
+org.wildfly,wildfly-microprofile-opentracing-smallrye,15.0.0.Final,1543618805000
+io.zeebe,atomix-cluster,3.2.0-alpha1,1559840469000
+io.zeebe,atomix-cluster,3.2.0-alpha2,1561734602000
+io.zeebe,atomix-cluster,3.2.0-alpha3,1563175426000
+io.zeebe,atomix-cluster,3.2.0-alpha4,1563268913000
+io.zeebe,atomix-cluster,3.2.0-alpha8,1572946146000

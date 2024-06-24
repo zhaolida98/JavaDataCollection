@@ -37,10 +37,14 @@ public class DownloadVisitor implements Visitor {
     String projName = groupId + "@" + artifactId;
     Path groupFolder = Paths.get(dataRoot, projName);
     try {
-      FileUtil.deleteDirectoryRecursively(groupFolder);
+      if (Files.exists(groupFolder)) {
+        logger.info("Folder already exists");
+        return;
+      }
+//      FileUtil.deleteDirectoryRecursively(groupFolder);
       CredentialsProvider cp = new UsernamePasswordCredentialsProvider("PRIVATE-TOKEN",
           configManager.getGitHubToken());
-      Git git = Git.cloneRepository()
+      Git.cloneRepository()
           .setCredentialsProvider(cp)
           .setURI(project.url)
           .setDirectory(groupFolder.toFile())
