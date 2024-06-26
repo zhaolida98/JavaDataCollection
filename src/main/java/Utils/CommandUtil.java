@@ -6,11 +6,12 @@ import java.util.List;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.tools.picocli.CommandLine;
 
 public class CommandUtil {
   private static final Logger logger = LogManager.getLogger(CommandUtil.class);
 
-  public static ExecutableOutput runExecutableWithArgs(List<String> cmds, File working_dir) {
+  public static ExecutableOutput runExecutableWithArgs(List<String> cmds, File working_dir) throws Exception {
     if (working_dir == null) {
       working_dir = new File(System.getProperty("user.dir"));
     }
@@ -41,8 +42,8 @@ public class CommandUtil {
       logger.debug("finish execution: " + result.getStandardOutput());
       return result;
     } catch (final Exception e) {
-      logger.error("Error in commands: \n{}", ExceptionUtils.getStackTrace(e));
-      return new ExecutableOutput(1, "", ExceptionUtils.getStackTrace(e));
+      logger.error("Error in commands: \n{}", ExceptionUtils.getMessage(e) + ExceptionUtils.getStackTrace(e));
+      throw new Exception("Error in command execution");
     }
   }
 

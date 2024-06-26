@@ -8,9 +8,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.Map;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,13 +18,14 @@ public class Main {
   private static Logger logger = LogManager.getLogger(Main.class);
 
   public static void main(String[] args) {
-    String inputCSV = "/home/nryet/JavaDataCollection/src/test/java/mvncentrorepo_test.csv";
+    String inputCSV = "src/test/java/mvncentrorepo.csv";
     Platform platform = Platform.MVN_CENTRAL;
+    int cores = 6;
 
     // Create a fixed thread pool based on the number of available processors
     // int cores = Runtime.getRuntime().availableProcessors();
-    int cores = 4;
-    ExecutorService executor = Executors.newFixedThreadPool(cores);
+    ExecutorService executor = new ThreadPoolExecutor(cores, Runtime.getRuntime().availableProcessors(),
+            2, TimeUnit.SECONDS, new LinkedBlockingQueue<>());
 
     try (Reader reader = new FileReader(inputCSV)) {
       CSVReaderHeaderAware csvReader = new CSVReaderHeaderAware(reader);
